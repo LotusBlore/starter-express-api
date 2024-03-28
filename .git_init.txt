@@ -1,0 +1,10 @@
+git init
+git add .
+git commit -m "First commit"
+git remote add origin https://github.com/LotusBlore/starter-express-api.git
+git remote -v
+git remote remove origin
+git remote remove origin
+git remote -v
+git remote add origin https://github.com/LotusBlore/starter-express-api.git
+git push origin main
