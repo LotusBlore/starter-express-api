@@ -5,11 +5,11 @@
     <meta name="keywords" content="LotusBlore Games​, Valorant​">
     <meta name="description" content="">
     <title>Главная</title>
-    <link rel="stylesheet" href="/css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="/css/main.css" media="screen">
 <link rel="stylesheet" href="/css/index.css" media="screen">
     <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 6.6.3, nicepage.com">
+    <script class="u-script" type="text/javascript" src="/js/main.js" defer=""></script>
+    <meta name="generator" content="LotusBlore 6.6.3, LotusBlore.com">
     <link rel="icon" href="/images/favicon.jpg">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>    
@@ -17,7 +17,7 @@
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": "Site1"
+		"name": "LotusBlore"
 }</script>
 
   <script>
@@ -76,20 +76,23 @@
         <div class="body2">
           <!-- Консоль -->
          <div class="typed-strings">
-             <span class="span-text-1">Привет, мир!</span>
+             <span class="span-text-1">LotusBlore</span>
+             <span class="span-text-2">Игровой контент.</span>
+             <span class="span-text-2">Привет, мир!</span>
              <span class="span-text-2">Hello, World!</span>
          </div>
-      
-         <div class="header">
-             <div class="head-wrap shift-text">
-                 <div class="text-editor-wrap">
-                     <div class="title-bar"><span class="title">typed.js — bash — 80x<span class="terminal-height">10</span></span></div>
-                     <div class="text-body">
-                         $ <span id="typed"></span><span class="typed-cursor"></span>
-                     </div>
-                 </div>
-             </div>
-         </div>
+         
+          <div class="header">
+            <div class="head-wrap shift-text">
+                <div class="text-editor-wrap">
+                    <div class="title-bar"><span class="title">Ubuntu<span class="terminal-height"></span></span></div>
+                    <div class="text-body">
+                        <span style="color: springgreen;">$</span> <span id="typed"></span><span class="typed-cursor"></span>
+                    </div>
+                </div>
+            </div>
+          </div>
+
          <br>
         <br>
         <br>
@@ -112,36 +115,102 @@ transparency: 0 !important
             loop: true
         });
     });
+
+    // Функция для перетаскивания окна терминала
+    function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            elmnt.querySelector('.title-bar').onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // получите позицию курсора при запуске:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // вызывайте функцию, когда курсор двигается:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // вычислите разницу в позиции курсора:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // установите новую позицию:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // прекратить перетаскивание при отпускании кнопки мыши:
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Запуск функции при загрузке документа
+        document.addEventListener('DOMContentLoaded', function() {
+            var terminal = document.querySelector('.text-editor-wrap');
+            dragElement(terminal);
+        });
   </script>
 
       <style>
         .text-editor-wrap {
-        display: block;
-        margin: auto;
-        max-width: 530px;
-        border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
-        clear: both;
-        overflow: hidden;
-        -webkit-transition: all 0.5s ease-out;
-        -moz-transition: all 0.5s ease-out;
-        -ms-transition: all 0.5s ease-out;
-        -o-transition: all 0.5s ease-out;
-        transition: all 0.5s ease-out;
+          position: absolute;
+          display: block;
+          margin: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          
+
+          max-width: 300px;
+          min-width: 300px;
+          max-height: 150px;
+          min-height: 150px;
+
+          background-color: rgba(0, 0, 0, 0.85);
+          border-radius: 10px;
+          box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+
+          color: #f0f0f0;
+
+          font-family: "Ubuntu", sans-serif;
+          overflow: hidden;
+          clear: both;
+
+          -webkit-transition: all 0s ease-out;
+          -moz-transition: all 0s ease-out;
+          -ms-transition: all 0s ease-out;
+          -o-transition: all 0s ease-out; 
+          transition: all 0s ease-out;
+
+          z-index: 1000;
+          user-select: none;
         }
 
         .title-bar {
-        padding: 5px 0;
-        font-family: "Lucida Grande", sans-serif;
-        font-size: 0.75em;
-        text-align: center;
-        text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
-        background-color: #f8f8f8;
-        background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
-        background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
-        background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
-        box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
-        border-bottom: #6a6a6a 1px solid;
+          padding: 5px 0;
+          font-family: "Ubuntu", sans-serif;
+          font-size: 0.75em;
+          text-align: center;
+          text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+          background-color: #f8f8f8;
+          background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+          background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+          background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+          box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+          border-bottom: #6a6a6a 1px solid;
+        }
+
+      .title {
+        color: red;
+        font-size: 14px;
       }
 
       .head-wrap {
@@ -177,7 +246,9 @@ transparency: 0 !important
         font-family: "Ubuntu", sans-serif;
         font-size: 100%;
         display: block;
+        
       }
+
       </style>
     </div>
     
